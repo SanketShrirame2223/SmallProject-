@@ -1,1 +1,1 @@
-alert("hey")
+ale("hey")

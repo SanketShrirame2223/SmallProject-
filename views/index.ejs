@@ -8,9 +8,34 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-  hi hi Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda expedita, autem asperiores quisquam, tenetur voluptatibus nulla nesciunt laudantium vel obcaecati, corporis omnis. Alias quos beatae, necessitatibus cum aut in!
-  <h1><%=2+2 %></h1>
-  ok sir
+ <div class="main w-full min-h-screen bg-zinc-900">
+  <div class="form p-10 text-white">
+    <form action="/create" method="post">
+      <input class="block w-full rounded-md outline-none px-5 py-2 bg-zinc-800" type="text" placeholder="Title goes here " name="title">
+      <textarea class="block w-full rounded-md outline-none mt-2 px-5 py-2 bg-zinc-800 resize-none" placeholder="Task details" name="details"></textarea>
+      <input class="mt-2 bg-blue-600 px-5 py-2 rounded-md" type="submit" value="create task">
+    </form>
+  </div>
+  <div class="tasks p-10 flex gap-3">
+<% if(files.length>0){%>
+    <% files.forEach(function(val){%>
+<div class="task  min-w-72 px-3 py-4 rounded-md bg-zinc-800 ">
+  <h1 class="text-white text-3xl tracking-tighter"><%= val%></h1>
+  <div class=" flex w-full justify-between items-center mt-3" >
+ <a class="text-blue-600 inline-block" href="/file/<%=val%>">read more</a>
+  <a class="text-zinc-600" href="/edit/<%=val%>">edit filename</a>
+</div>
+
+  </div>
+  
+ 
+    <%})%>
+    <%} else{%>
+<h3 class="text-zinc-600">no tasks yet</h3>
+    <%}%> 
+
+  </div>
+ </div>
  <script src="../javascript/app.js"></script>
 </body>
 </html>
